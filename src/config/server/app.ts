@@ -56,8 +56,9 @@ export const getAppConfig = () => {
       : 'https://chat-plugins.lobehub.com',
 
     PLUGIN_SETTINGS: process.env.PLUGIN_SETTINGS,
-
-    ENABLE_OAUTH_SSO: !!process.env.ENABLE_OAUTH_SSO,
+    
+    // ENABLE_OAUTH_SSO: !!process.env.ENABLE_OAUTH_SSO,
+    ENABLE_OAUTH_SSO: true,
     SSO_PROVIDERS: process.env.SSO_PROVIDERS || 'auth0',
     AUTH0_CLIENT_ID: process.env.AUTH0_CLIENT_ID || '',
     AUTH0_CLIENT_SECRET: process.env.AUTH0_CLIENT_SECRET || '',
