@@ -28,6 +28,8 @@ interface InvalidAccessCodeProps {
 const InvalidAccessCode = memo<InvalidAccessCodeProps>(({ id, provider }) => {
   const { t } = useTranslation('error');
   const isEnabledOAuth = useGlobalStore(commonSelectors.enabledOAuthSSO);
+  const isEnabledPassword = false;
+  const isEnabledApiKey = false;
   const defaultTab = isEnabledOAuth ? Tab.Oauth : Tab.Password;
   const [mode, setMode] = useState<Tab>(defaultTab);
 
@@ -45,20 +47,24 @@ const InvalidAccessCode = memo<InvalidAccessCodeProps>(({ id, provider }) => {
                   value: Tab.Oauth,
                 }
               : undefined,
-            {
-              icon: <Icon icon={AsteriskSquare} />,
-              label: t('unlock.tabs.password'),
-              value: Tab.Password,
-            },
-            { icon: <Icon icon={KeySquare} />, label: t('unlock.tabs.apiKey'), value: Tab.Api },
+            isEnabledPassword
+              ? {
+                  icon: <Icon icon={AsteriskSquare} />,
+                  label: t('unlock.tabs.password'),
+                  value: Tab.Password,
+                }
+              : undefined,
+            isEnabledApiKey
+              ? { icon: <Icon icon={KeySquare} />, label: t('unlock.tabs.apiKey'), value: Tab.Api }
+              : undefined,
           ].filter(Boolean) as SegmentedLabeledOption[]
         }
         style={{ width: '100%' }}
         value={mode}
       />
       <Flexbox gap={24}>
-        {mode === Tab.Password && <AccessCodeForm id={id} />}
-        {mode === Tab.Api && <APIKeyForm id={id} provider={provider} />}
+        {isEnabledPassword && mode === Tab.Password && <AccessCodeForm id={id} />}
+        {isEnabledApiKey && mode === Tab.Api && <APIKeyForm id={id} provider={provider} />}
         {isEnabledOAuth && mode === Tab.Oauth && <OAuthForm id={id} />}
       </Flexbox>
     </ErrorActionContainer>
