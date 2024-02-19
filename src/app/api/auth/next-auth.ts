@@ -5,16 +5,28 @@ import AzureAd from 'next-auth/providers/azure-ad';
 import { getServerConfig } from '@/config/server';
 
 const {
-  ENABLE_OAUTH_SSO,
-  SSO_PROVIDERS,
+  ALLOW_LIST,
   AUTH0_CLIENT_ID,
   AUTH0_CLIENT_SECRET,
   AUTH0_ISSUER,
   AZURE_AD_CLIENT_ID,
   AZURE_AD_CLIENT_SECRET,
   AZURE_AD_TENANT_ID,
+  ENABLE_OAUTH_SSO,
   NEXTAUTH_SECRET,
+  SSO_PROVIDERS,
 } = getServerConfig();
+
+function meetRequirement(email: string, cond: string) {
+  if (cond === '*') return true;
+  if (email === cond) return true;
+  if (!cond.includes('@') && email.endsWith(cond)) return true;
+  return false;
+}
+
+export const isEmailAllowed = (email: string) => {
+  return ALLOW_LIST.some((cond) => meetRequirement(email.toLowerCase(), cond));
+};
 
 declare module '@auth/core/jwt' {
   // Returned by the `jwt` callback and `auth`, when using JWT sessions
@@ -40,6 +52,10 @@ const nextAuth = NextAuth({
         session.user.id = token.userId ?? session.user.id;
       }
       return session;
+    },
+    signIn({ user }) {
+      if (!user.email) return false;
+      return isEmailAllowed(user.email);
     },
   },
   providers: ENABLE_OAUTH_SSO

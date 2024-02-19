@@ -72,5 +72,7 @@ export const getAppConfig = () => {
     LANGFUSE_SECRET_KEY: process.env.LANGFUSE_SECRET_KEY || '',
     LANGFUSE_PUBLIC_KEY: process.env.LANGFUSE_PUBLIC_KEY || '',
     LANGFUSE_HOST: process.env.LANGFUSE_HOST || 'https://cloud.langfuse.com',
+
+    ALLOW_LIST: process.env.ALLOW_LIST ? process.env.ALLOW_LIST.split(',') : [],
   };
 };
