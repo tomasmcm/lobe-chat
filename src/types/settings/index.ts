@@ -15,9 +15,7 @@ export * from './sync';
 export * from './tts';
 
 export interface GlobalTool {
-  dalle: {
-    autoGenerate: boolean;
-  };
+  [key: string]: any;
 }
 
 export interface GlobalServerConfig {

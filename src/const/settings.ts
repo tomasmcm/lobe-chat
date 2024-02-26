@@ -120,11 +120,7 @@ export const DEFAULT_TTS_CONFIG: GlobalTTSConfig = {
   sttServer: 'openai',
 };
 
-export const DEFAULT_TOOL_CONFIG = {
-  dalle: {
-    autoGenerate: false,
-  },
-};
+export const DEFAULT_TOOL_CONFIG = {};
 
 const DEFAULT_SYNC_CONFIG: GlobalSyncSettings = {
   webrtc: { enabled: false },

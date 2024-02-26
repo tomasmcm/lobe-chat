@@ -56,22 +56,6 @@ const Tools = memo(() => {
           className: styles.menu,
           items: [
             {
-              children: builtinList.map((item) => ({
-                icon: <Avatar avatar={item.meta.avatar} size={24} />,
-                key: item.identifier,
-                label: (
-                  <ToolItem
-                    identifier={item.identifier}
-                    label={item.meta?.title || item.identifier}
-                  />
-                ),
-              })),
-
-              key: 'builtins',
-              label: t('tools.builtins.groupName'),
-              type: 'group',
-            },
-            {
               children: [
                 ...list.map((item) => ({
                   icon: item.meta?.avatar ? (
