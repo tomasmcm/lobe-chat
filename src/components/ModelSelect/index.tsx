@@ -1,6 +1,6 @@
 import { Icon, Tooltip } from '@lobehub/ui';
 import { createStyles } from 'antd-style';
-import { LucideEye, LucidePaperclip, ToyBrick } from 'lucide-react';
+import { LucideEye, LucidePaperclip, ShieldCheck, ShieldOff, ToyBrick } from 'lucide-react';
 import numeral from 'numeral';
 import { rgba } from 'polished';
 import { memo } from 'react';
@@ -43,6 +43,14 @@ const useStyles = createStyles(({ css, token }) => ({
     color: ${token.green};
     background: ${token.green1};
   `,
+  tagPurple: css`
+    color: ${token.purple};
+    background: ${token.purple1};
+  `,
+  tagRed: css`
+    color: ${token.red};
+    background: ${token.red1};
+  `,
   token: css`
     width: 36px;
     height: 20px;
@@ -81,7 +89,7 @@ export const ModelItemRender = memo<ModelItemRenderProps>(({ showInfoTag = true,
           )}
           {model.vision && (
             <Tooltip placement={'right'} title={t('ModelSelect.featureTag.vision')}>
-              <div className={cx(styles.tag, styles.tagGreen)}>
+              <div className={cx(styles.tag, styles.tagPurple)}>
                 <Icon icon={LucideEye} />
               </div>
             </Tooltip>
@@ -94,6 +102,20 @@ export const ModelItemRender = memo<ModelItemRenderProps>(({ showInfoTag = true,
             >
               <div className={cx(styles.tag, styles.tagBlue)}>
                 <Icon icon={ToyBrick} />
+              </div>
+            </Tooltip>
+          )}
+          {typeof model.private !== 'undefined' && (
+            <Tooltip
+              placement={'right'}
+              title={t(
+                model.private
+                  ? 'ModelSelect.featureTag.private'
+                  : 'ModelSelect.featureTag.notPrivate',
+              )}
+            >
+              <div className={cx(styles.tag, model.private ? styles.tagGreen : styles.tagRed)}>
+                <Icon icon={model.private ? ShieldCheck : ShieldOff} />
               </div>
             </Tooltip>
           )}

@@ -5,16 +5,19 @@ const Google: ModelProviderCard = {
     {
       displayName: 'Gemini 1.5 Pro',
       id: 'gemini-1.5-pro',
+      private: false,
       tokens: 1_048_576,
     },
     {
-      displayName: 'Gemini Pro',
+      displayName: 'Gemini 1.0 Pro',
       id: 'gemini-pro',
+      private: false,
       tokens: 30_720,
     },
     {
-      displayName: 'Gemini Pro Vision',
+      displayName: 'Gemini 1.0 Pro Vision',
       id: 'gemini-pro-vision',
+      private: false,
       tokens: 12_288,
       vision: true,
     },

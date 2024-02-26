@@ -20,6 +20,10 @@ export interface ChatModelCard {
    */
   legacy?: boolean;
   maxOutput?: number;
+  /**
+   * whether model is in private environment
+   */
+  private?: boolean;
   tokens?: number;
   /**
    *  whether model supports vision

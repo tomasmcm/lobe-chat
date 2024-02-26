@@ -30,4 +30,8 @@ export default ({ prefixCls }: { prefixCls: string }) => css`
       }
     }
   }
+
+  .ant-tooltip-inner {
+    word-break: normal !important;
+  }
 `;

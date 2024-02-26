@@ -4,6 +4,8 @@
       "custom": "Custom model, by default, supports both function call and visual recognition. Please verify the availability of the above capabilities based on actual situations.",
       "file": "This model supports file upload for reading and recognition",
       "functionCall": "This model supports function call.",
+      "notPrivate": "This model is hosted in a SHARED environment and does NOT ensure data safety. Do NOT share private information.",
+      "private": "This model is hosted in a PRIVATE environment and ensures data safety.",
       "tokens": "This model supports a maximum of {{tokens}} tokens per session.",
       "vision": "This model supports visual recognition."
     }

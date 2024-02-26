@@ -4,10 +4,12 @@ import { ModelProviderCard } from '@/types/llm';
 const OpenAI: ModelProviderCard = {
   chatModels: [
     {
-      description: 'GPT 3.5 Turbo，适用于各种文本生成和理解任务',
+      description:
+        'GPT 3.5 Turbo, suitable for a variety of text generation and understanding tasks',
       displayName: 'GPT-3.5 Turbo',
       functionCall: true,
       id: 'gpt-3.5-turbo',
+      private: true,
       tokens: 16_385,
     },
     {
@@ -54,6 +56,7 @@ const OpenAI: ModelProviderCard = {
       displayName: 'GPT-4 Turbo Preview',
       functionCall: true,
       id: 'gpt-4-turbo-preview',
+      private: true,
       tokens: 128_000,
     },
     {
@@ -64,9 +67,10 @@ const OpenAI: ModelProviderCard = {
       tokens: 128_000,
     },
     {
-      description: 'GPT-4 视觉预览版，支持视觉任务',
+      description: 'GPT-4 visual preview version, supporting visual tasks',
       displayName: 'GPT-4 Turbo Vision Preview',
       id: 'gpt-4-vision-preview',
+      private: true,
       tokens: 128_000,
       vision: true,
     },
