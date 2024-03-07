@@ -55,7 +55,7 @@ export const checkAuthMethod = (
   if (!ACCESS_CODES.length) return;
 
   if (!accessCode || !ACCESS_CODES.includes(accessCode)) {
-    console.warn('tracked an invalid access code, 检查到输入的错误密码：', accessCode);
+    console.warn('tracked an invalid access code, Check the wrong password entered:', accessCode);
     throw AgentRuntimeError.createError(ChatErrorType.InvalidAccessCode);
   }
 };

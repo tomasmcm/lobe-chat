@@ -49,6 +49,7 @@ const nextAuth = NextAuth({
     async session({ session, token }) {
       // Pick userid from token
       if (session.user) {
+        // @ts-ignore next line
         session.user.id = token.userId ?? session.user.id;
       }
       return session;
