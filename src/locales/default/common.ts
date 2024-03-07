@@ -6,6 +6,7 @@ export default {
       functionCall: '该模型支持函数调用（Function Call）',
       notPrivate:
         'This model is hosted in a shared environment and does not ensure data safety. Do not share private information.',
+      price: 'Average cost per 1 million tokens.',
       private: 'This model is hosted in a private environment and ensures data safety.',
       tokens: '该模型单个会话最多支持 {{tokens}} Tokens',
       vision: '该模型支持视觉识别',

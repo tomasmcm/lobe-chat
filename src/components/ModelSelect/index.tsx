@@ -52,8 +52,9 @@ const useStyles = createStyles(({ css, token }) => ({
     background: ${token.red1};
   `,
   token: css`
-    width: 36px;
+    width: auto;
     height: 20px;
+    padding: 0 4px;
 
     font-family: ${token.fontFamilyCode};
     font-size: 11px;
@@ -128,6 +129,15 @@ export const ModelItemRender = memo<ModelItemRenderProps>(({ showInfoTag = true,
               })}
             >
               <Center className={styles.token}>{Math.floor(model.tokens / 1000)}K</Center>
+            </Tooltip>
+          )}
+          {model.price && (
+            <Tooltip
+              overlayStyle={{ maxWidth: 'unset' }}
+              placement={'right'}
+              title={t('ModelSelect.featureTag.price')}
+            >
+              <Center className={styles.token}>{model.price}</Center>
             </Tooltip>
           )}
           {model.isCustom && (

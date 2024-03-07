@@ -21,6 +21,10 @@ export interface ChatModelCard {
   legacy?: boolean;
   maxOutput?: number;
   /**
+   *  average price per million tokens
+   */
+  price?: string;
+  /**
    * whether model is in private environment
    */
   private?: boolean;
