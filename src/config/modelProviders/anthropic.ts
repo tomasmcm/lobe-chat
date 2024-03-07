@@ -4,27 +4,24 @@ const Anthropic: ModelProviderCard = {
   chatModels: [
     {
       description:
-        'Ideal balance of intelligence and speed for enterprise workloads. Maximum utility at a lower price, dependable, balanced for scaled deployments',
-      displayName: 'Claude 3 Sonnet',
-      id: 'claude-3-sonnet-20240229',
-      maxOutput: 4096,
-      tokens: 200_000,
-      vision: true,
-    },
-    {
-      description:
-        'Most powerful model for highly complex tasks. Top-level performance, intelligence, fluency, and understanding',
-      displayName: 'Claude 3 Opus',
-      id: 'claude-3-opus-20240229',
-      maxOutput: 4096,
-      tokens: 200_000,
-      vision: true,
-    },
-    {
-      description:
         'Fastest and most compact model for near-instant responsiveness. Quick and accurate targeted performance',
-      displayName: 'Claude 3 Haiku',
+      displayName: 'Claude 3 Haiku (Light & Fast)',
       id: 'claude-3-haiku-20240307',
+      maxOutput: 4096,
+      tokens: 200_000,
+      vision: true,
+    },
+    {
+      displayName: 'Claude Instant 1.2',
+      id: 'claude-instant-1.2',
+      maxOutput: 4096,
+      tokens: 100_000,
+    },
+    {
+      description:
+        'Ideal balance of intelligence and speed for enterprise workloads. Maximum utility at a lower price, dependable, balanced for scaled deployments',
+      displayName: 'Claude 3 Sonnet (Hard-working)',
+      id: 'claude-3-sonnet-20240229',
       maxOutput: 4096,
       tokens: 200_000,
       vision: true,
@@ -43,10 +40,13 @@ const Anthropic: ModelProviderCard = {
       tokens: 100_000,
     },
     {
-      displayName: 'Claude Instant 1.2',
-      id: 'claude-instant-1.2',
+      description:
+        'Most powerful model for highly complex tasks. Top-level performance, intelligence, fluency, and understanding',
+      displayName: 'Claude 3 Opus (Powerful)',
+      id: 'claude-3-opus-20240229',
       maxOutput: 4096,
-      tokens: 100_000,
+      tokens: 200_000,
+      vision: true,
     },
   ],
   id: 'anthropic',
