@@ -18,6 +18,9 @@ declare global {
       AZURE_ENDPOINT?: string;
       AZURE_API_VERSION?: string;
       USE_AZURE_OPENAI?: string;
+      AZURE_MODEL_MAP?: {
+        [key: string]: string;
+      };
 
       // ZhiPu Provider
       ZHIPU_API_KEY?: string;
@@ -140,6 +143,11 @@ export const getProviderConfig = () => {
     AZURE_API_VERSION: process.env.AZURE_API_VERSION,
     AZURE_ENDPOINT: process.env.AZURE_ENDPOINT,
     USE_AZURE_OPENAI: process.env.USE_AZURE_OPENAI === '1',
+    AZURE_MODEL_MAP: {
+      'gpt-3.5-turbo': process.env.AZURE_GPT_35_TURBO_NAME,
+      'gpt-4-turbo-preview': process.env.AZURE_GPT_4_TURBO_NAME,
+      'gpt-4-vision-preview': process.env.AZURE_GPT_4_VISION_NAME,
+    },
 
     ENABLE_OLLAMA: !!process.env.OLLAMA_PROXY_URL,
     OLLAMA_PROXY_URL: process.env.OLLAMA_PROXY_URL || '',

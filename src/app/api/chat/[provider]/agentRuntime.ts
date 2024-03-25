@@ -41,6 +41,10 @@ export interface AgentChatOptions {
   trace?: TracePayload;
 }
 
+type AzureModelMap = {
+  [key: string]: string | undefined;
+};
+
 class AgentRuntime {
   private _runtime: LobeRuntimeAI;
 
@@ -191,8 +195,14 @@ class AgentRuntime {
   }
 
   private static initOpenAI(payload: JWTPayload, azureOpenAI?: AzureOpenAIParams) {
-    const { OPENAI_API_KEY, OPENAI_PROXY_URL, AZURE_API_VERSION, AZURE_API_KEY, USE_AZURE_OPENAI } =
-      getServerConfig();
+    const {
+      OPENAI_API_KEY,
+      OPENAI_PROXY_URL,
+      AZURE_API_VERSION,
+      AZURE_API_KEY,
+      USE_AZURE_OPENAI,
+      AZURE_MODEL_MAP,
+    } = getServerConfig();
     const openaiApiKey = payload?.apiKey || OPENAI_API_KEY;
     const baseURL = payload?.endpoint || OPENAI_PROXY_URL;
 
@@ -206,7 +216,7 @@ class AgentRuntime {
       apiKey,
       azureOptions: {
         apiVersion,
-        model: azureOpenAI?.model,
+        model: (AZURE_MODEL_MAP as AzureModelMap)[azureOpenAI?.model || 'gpt-3.5-turbo'],
       },
       baseURL,
       useAzure,
