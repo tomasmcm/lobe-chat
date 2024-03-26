@@ -38,6 +38,8 @@ const OllamaChecker = memo(() => {
         {!error && data?.models && (
           <Flexbox gap={4} horizontal>
             <CheckCircleFilled
+              onPointerEnterCapture={undefined}
+              onPointerLeaveCapture={undefined}
               style={{
                 color: theme.colorSuccess,
               }}

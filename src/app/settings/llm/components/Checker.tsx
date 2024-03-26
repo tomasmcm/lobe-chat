@@ -86,6 +86,8 @@ const Checker = memo<ConnectionCheckerProps>(({ model, provider }) => {
         {pass && (
           <Flexbox gap={4} horizontal>
             <CheckCircleFilled
+              onPointerEnterCapture={undefined}
+              onPointerLeaveCapture={undefined}
               style={{
                 color: theme.colorSuccess,
               }}
