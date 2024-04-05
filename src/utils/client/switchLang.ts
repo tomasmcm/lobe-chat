@@ -3,7 +3,7 @@ import { changeLanguage } from 'i18next';
 import { LocaleMode } from '@/types/locale';
 
 export const switchLang = (locale: LocaleMode) => {
-  const lang = locale === 'auto' ? navigator.language : locale;
+  const lang = locale === 'auto' ? 'en-US' : locale;
 
   changeLanguage(lang);
   document.documentElement.lang = lang;
