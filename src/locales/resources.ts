@@ -32,6 +32,10 @@ export const normalizeLocale = (locale?: string) => {
       return 'en-US';
     }
 
+    case 'pl': {
+      return 'pl-PL';
+    }
+
     default: {
       return locale;
     }
