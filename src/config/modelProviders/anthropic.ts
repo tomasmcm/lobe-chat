@@ -14,6 +14,7 @@ const Anthropic: ModelProviderCard = {
     },
     {
       displayName: 'Claude Instant 1.2',
+      hidden: true,
       id: 'claude-instant-1.2',
       maxOutput: 4096,
       price: '€1.47',
@@ -31,6 +32,7 @@ const Anthropic: ModelProviderCard = {
     },
     {
       displayName: 'Claude 2.1',
+      hidden: true,
       id: 'claude-2.1',
       maxOutput: 4096,
       price: '€14.7',
@@ -48,6 +50,7 @@ const Anthropic: ModelProviderCard = {
       description:
         'Most powerful model for highly complex tasks. Top-level performance, intelligence, fluency, and understanding',
       displayName: 'Claude 3 Opus (Powerful)',
+      hidden: true,
       id: 'claude-3-opus-20240229',
       maxOutput: 4096,
       price: '€41.3',
