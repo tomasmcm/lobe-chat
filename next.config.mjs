@@ -62,7 +62,7 @@ const nextConfig = {
   ],
   reactStrictMode: true,
 
-  webpack(config) {
+  webpack(config, { isServer }) {
     config.experiments = {
       asyncWebAssembly: true,
       layers: true,
@@ -77,6 +77,16 @@ const nextConfig = {
         fullySpecified: false,
       },
     });
+
+    if (!isServer) {
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        fs: false,
+        module: false,
+        "node:fs/promises": false,
+        perf_hooks: false,
+      };
+    }
 
     return config;
   },
