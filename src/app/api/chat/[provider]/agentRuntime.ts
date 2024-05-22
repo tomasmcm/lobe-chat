@@ -42,7 +42,11 @@ export interface AgentChatOptions {
 }
 
 type AzureModelMap = {
-  [key: string]: string | undefined;
+  [key: string]: {
+    DEPLOYMENT: string;
+    ENDPOINT: string;
+    KEY: string;
+  };
 };
 
 class AgentRuntime {
@@ -203,8 +207,12 @@ class AgentRuntime {
       USE_AZURE_OPENAI,
       AZURE_MODEL_MAP,
     } = getServerConfig();
-    const openaiApiKey = payload?.apiKey || OPENAI_API_KEY;
-    const baseURL = payload?.endpoint || OPENAI_PROXY_URL;
+
+    const { DEPLOYMENT, ENDPOINT, KEY } = (AZURE_MODEL_MAP as AzureModelMap)[
+      azureOpenAI?.model || 'gpt-3.5-turbo'
+    ];
+    const openaiApiKey = payload?.apiKey || KEY || OPENAI_API_KEY;
+    const baseURL = payload?.endpoint || ENDPOINT || OPENAI_PROXY_URL;
 
     const azureApiKey = payload.apiKey || AZURE_API_KEY;
     const useAzure = azureOpenAI?.useAzure || USE_AZURE_OPENAI;
@@ -216,7 +224,7 @@ class AgentRuntime {
       apiKey,
       azureOptions: {
         apiVersion,
-        model: (AZURE_MODEL_MAP as AzureModelMap)[azureOpenAI?.model || 'gpt-3.5-turbo'],
+        model: DEPLOYMENT,
       },
       baseURL,
       useAzure,
@@ -317,7 +325,6 @@ class AgentRuntime {
 
     return new LobeZeroOneAI({ apiKey });
   }
-
 }
 
 export default AgentRuntime;

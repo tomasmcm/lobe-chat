@@ -19,7 +19,11 @@ declare global {
       AZURE_API_VERSION?: string;
       USE_AZURE_OPENAI?: string;
       AZURE_MODEL_MAP?: {
-        [key: string]: string;
+        [key: string]: {
+          DEPLOYMENT: string;
+          ENDPOINT: string;
+          KEY: string;
+        };
       };
 
       // ZhiPu Provider
@@ -144,9 +148,21 @@ export const getProviderConfig = () => {
     AZURE_ENDPOINT: process.env.AZURE_ENDPOINT,
     USE_AZURE_OPENAI: process.env.USE_AZURE_OPENAI === '1',
     AZURE_MODEL_MAP: {
-      'gpt-3.5-turbo': process.env.AZURE_GPT_35_TURBO_NAME,
-      'gpt-4-turbo-preview': process.env.AZURE_GPT_4_TURBO_NAME,
-      'gpt-4-vision-preview': process.env.AZURE_GPT_4_VISION_NAME,
+      'gpt-3.5-turbo': {
+        DEPLOYMENT: process.env.AZURE_GPT_35_TURBO_NAME,
+        ENDPOINT: process.env.AZURE_GPT_35_TURBO_ENDPOINT,
+        KEY: process.env.AZURE_GPT_35_TURBO_API_KEY,
+      },
+      'gpt-4-turbo-preview': {
+        DEPLOYMENT: process.env.AZURE_GPT_4_TURBO_NAME,
+        ENDPOINT: process.env.AZURE_GPT_4_TURBO_ENDPOINT,
+        KEY: process.env.AZURE_GPT_4_TURBO_API_KEY,
+      },
+      'gpt-4o': {
+        DEPLOYMENT: process.env.AZURE_GPT_4O_NAME,
+        ENDPOINT: process.env.AZURE_GPT_4O_ENDPOINT,
+        KEY: process.env.AZURE_GPT_4O_API_KEY,
+      },
     },
 
     ENABLE_OLLAMA: !!process.env.OLLAMA_PROXY_URL,
