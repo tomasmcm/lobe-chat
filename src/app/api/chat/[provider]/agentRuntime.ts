@@ -214,7 +214,7 @@ class AgentRuntime {
     const openaiApiKey = payload?.apiKey || KEY || OPENAI_API_KEY;
     const baseURL = payload?.endpoint || ENDPOINT || OPENAI_PROXY_URL;
 
-    const azureApiKey = payload.apiKey || AZURE_API_KEY;
+    const azureApiKey = payload.apiKey || KEY || AZURE_API_KEY;
     const useAzure = azureOpenAI?.useAzure || USE_AZURE_OPENAI;
     const apiVersion = azureOpenAI?.apiVersion || AZURE_API_VERSION;
 
