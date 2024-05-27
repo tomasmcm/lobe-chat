@@ -1,21 +1,35 @@
 import { ModelProviderCard } from '@/types/llm';
 
+// ref https://console.groq.com/docs/models
 const Groq: ModelProviderCard = {
   chatModels: [
     {
-      displayName: 'Mixtral-8x7b-Instruct-v0.1',
-      id: 'mixtral-8x7b-32768',
-      tokens: 32_768,
-    },
-    {
-      displayName: 'Gemma-7b-it',
-      id: 'gemma-7b-it',
+      displayName: 'LLaMA3-3-70B',
+      functionCall: true,
+      id: 'llama3-70b-8192',
+      private: false,
       tokens: 8192,
     },
     {
-      displayName: 'LLaMA2-70b-chat',
-      id: 'llama2-70b-4096',
-      tokens: 4096,
+      displayName: 'Mixtral-8x7b',
+      functionCall: true,
+      id: 'mixtral-8x7b-32768',
+      private: false,
+      tokens: 32_768,
+    },
+    {
+      displayName: 'LLaMA3-3-8B',
+      functionCall: true,
+      id: 'llama3-8b-8192',
+      private: false,
+      tokens: 8192,
+    },
+    {
+      displayName: 'Gemma-7b-it',
+      functionCall: true,
+      id: 'gemma-7b-it',
+      private: false,
+      tokens: 8192,
     },
   ],
   id: 'groq',
